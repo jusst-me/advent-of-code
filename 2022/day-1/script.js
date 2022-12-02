@@ -1,9 +1,9 @@
 const readFile = require("../../readFile");
 
-async function init() {
+async function day1() {
   /* Read file */
-  // const rawData = await readFile("2022/day-1/data.test.txt");
-  const rawData = await readFile("2022/day-1/data.txt");
+  const rawData = await readFile("2022/day-1/data.test.txt");
+  // const rawData = await readFile("2022/day-1/data.txt");
 
   /* Parse data */
   const data = rawData
@@ -23,4 +23,4 @@ async function init() {
   });
 };
 
-init();
+day1();
