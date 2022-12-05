@@ -1,6 +1,6 @@
 const readFile = require("../../readFile");
 
-async function day2_1() {
+function day2_1(rounds) {
   const SCORE = {
     A: 1,
     B: 2,
@@ -12,13 +12,6 @@ async function day2_1() {
     DRAW: 3,
     LOSE: 0,
   };
-
-  /* Read file */
-  // const rawData = await readFile("2022/day-2/data.test.txt");
-  const rawData = await readFile("2022/day-2/data.txt");
-
-  /* Parse data */
-  const rounds = rawData.split("\n").map((n) => n.split(" "));
 
   function getScore([opponent, player]) {
     let score = 0;
@@ -43,12 +36,10 @@ async function day2_1() {
     return score;
   }
 
-  const totalScore = rounds.reduce((acc, round) => acc + getScore(round), 0);
-
-  console.log({ totalScore });
+  return rounds.reduce((acc, round) => acc + getScore(round), 0);
 }
 
-async function day2_2() {
+function day2_2(rounds) {
   const SCORE = {
     X: 0,
     Y: 3,
@@ -59,13 +50,6 @@ async function day2_2() {
   };
 
   const hands = ["A", "B", "C"];
-
-  /* Read file */
-  // const rawData = await readFile("2022/day-2/data.test.txt");
-  const rawData = await readFile("2022/day-2/data.txt");
-
-  /* Parse data */
-  const rounds = rawData.split("\n").map((n) => n.split(" "));
 
   function getScore([opponent, outcome]) {
     let score = 0;
@@ -90,8 +74,20 @@ async function day2_2() {
     return score;
   }
 
-  const totalScore = rounds.reduce((acc, round) => acc + getScore(round), 0);
-  console.log({ totalScore });
+  return rounds.reduce((acc, round) => acc + getScore(round), 0);
 }
 
-day2_2();
+async function day2() {
+  /* Read file */
+  const data = await readFile("2022/day-2/data.txt");
+
+  /* Parse data */
+  const rounds = data.split("\n").map((n) => n.split(" "));
+
+  console.log({
+    partOne: day2_1(rounds),
+    partTwo: day2_2(rounds),
+  });
+}
+
+day2();

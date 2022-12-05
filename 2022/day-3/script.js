@@ -55,13 +55,13 @@ const priority = [
   "Z",
 ];
 
-async function day3_1() {
-  /* Read file */
-  // const rawData = await readFile("2022/day-3/data.test.txt");
-  const rawData = await readFile("2022/day-3/data.txt");
+const getSum = (badges) =>
+  badges.reduce(
+    (acc, cur) => acc + priority.findIndex((p) => p === cur) + 1,
+    0
+  );
 
-  /* Parse data */
-  const rucksacks = rawData.split("\n");
+function day3_1(rucksacks) {
   const compartments = rucksacks.map((r) => {
     const half = Math.ceil(r.length / 2);
 
@@ -76,27 +76,16 @@ async function day3_1() {
       i = 0;
     while (!double) {
       if (second.includes(first[i])) double = first[i];
-
       i++;
     }
 
     return double;
   });
 
-  const sum = doubles.reduce(
-    (acc, cur) => acc + priority.findIndex((p) => p === cur) + 1,
-    0
-  );
-  console.log({ doubles, sum });
+  return getSum(doubles);
 }
 
-async function day3_2() {
-  /* Read file */
-  // const rawData = await readFile("2022/day-3/data.test.txt");
-  const rawData = await readFile("2022/day-3/data.txt");
-
-  /* Parse data */
-  const rucksacks = rawData.split("\n");
+function day3_2(rucksacks) {
   let teamIndex = 0;
   const teams = rucksacks.reduce((acc, cur, index) => {
     acc[teamIndex] = [...(acc[teamIndex] || []), cur];
@@ -106,24 +95,33 @@ async function day3_2() {
     return acc;
   }, []);
 
-  
   const badges = teams.map(([first, second, third]) => {
     let badge = false,
-    i = 0;
+      i = 0;
     while (!badge) {
       if ([second, third].every((rucksack) => rucksack.includes(first[i]))) {
         badge = first[i];
       }
-      
       i++;
     }
-    
+
     return badge;
   });
-  
-  const sum = badges.reduce((acc, cur) => acc + priority.findIndex(p => p === cur) + 1 ,0)
-  console.log({ badges, sum });
+
+  return getSum(badges);
 }
 
-// day3_1();
-day3_2();
+async function day3() {
+  /* Read file */
+  const data = await readFile("2022/day-3/data.txt");
+
+  /* Parse data */
+  const rucksacks = data.split("\n");
+
+  console.log({
+    partOne: day3_1(rucksacks),
+    partTwo: day3_2(rucksacks),
+  });
+}
+
+day3();
