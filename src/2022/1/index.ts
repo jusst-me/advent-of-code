@@ -18,7 +18,7 @@ const getAnswers = (parsedData: ParsedData): Answer => {
   return { partOne, partTwo };
 };
 
-const init = async (): Answer => {
+const init = async () => {
   const testData = await readFile(__dirname, 'data.test.txt');
   const realData = await readFile(__dirname, 'data.txt');
 
