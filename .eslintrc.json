@@ -6,7 +6,8 @@
   "extends": [
     "eslint:recommended",
     "plugin:@typescript-eslint/recommended",
-    "airbnb-base"
+    "airbnb-base",
+    "prettier"
   ],
   "overrides": [],
   "parser": "@typescript-eslint/parser",
@@ -29,8 +30,6 @@
     "semi": ["error", "always"],
     "import/extensions": "off",
     "radix": ["error", "as-needed"],
-    "no-console": "warn",
-    "implicit-arrow-linebreak": "off", // Prettier
-    "comma-dangle": "off" // Prettier
+    "no-console": "warn"
   }
 }
