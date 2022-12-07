@@ -97,21 +97,18 @@ const init = async () => {
   const { testData, realData } = await readFile(__dirname);
 
   const parsedTestData = getRounds(testData);
-  const parsedRealData = getRounds(realData);
-
-  const answer = {
-    test: {
-      partOne: partOne(parsedTestData),
-      partTwo: partTwo(parsedTestData),
-    },
-    real: {
-      partOne: partOne(parsedRealData),
-      partTwo: partTwo(parsedRealData),
-    },
+  const test = {
+    partOne: partOne(parsedTestData),
+    partTwo: partTwo(parsedTestData),
   };
+  console.log({ test });
 
-  console.log(answer);
-  return answer;
+  const parsedRealData = getRounds(realData);
+  const real = {
+    partOne: partOne(parsedRealData),
+    partTwo: partTwo(parsedRealData),
+  };
+  console.log({ real });
 };
 
 init();

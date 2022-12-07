@@ -21,13 +21,13 @@ const getAnswers = (parsedData: ParsedData): Answer => {
 const init = async () => {
   const { testData, realData } = await readFile(__dirname);
 
-  const answer = {
-    test: getAnswers(getParsedData(testData)),
-    real: getAnswers(getParsedData(realData)),
-  };
+  const test = getAnswers(getParsedData(testData));
+  console.log({ test });
 
-  console.log(answer);
-  return answer;
+  const real = getAnswers(getParsedData(realData));
+  console.log({ real });
+
+  return { test, real };
 };
 
 init();

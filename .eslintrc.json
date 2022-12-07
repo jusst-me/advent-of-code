@@ -30,6 +30,6 @@
     "semi": ["error", "always"],
     "import/extensions": "off",
     "radix": ["error", "as-needed"],
-    "no-console": "warn"
+    "no-console": "off"
   }
 }
