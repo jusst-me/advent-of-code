@@ -1,3 +1,3 @@
 # advent-of-code
 
-Run `npx ts-node src/{year}/{day}` // ex. `npx ts-node src/2022/5`
+Run `npx ts-node typescript/{year}/{day}` // ex. `npx ts-node typescript/2022/5`

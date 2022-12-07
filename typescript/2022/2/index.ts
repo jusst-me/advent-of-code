@@ -94,8 +94,7 @@ const getRounds = (rawData: string) =>
   rawData.split('\n').map((n) => n.split(' '));
 
 const init = async () => {
-  const testData = await readFile(__dirname, 'data.test.txt');
-  const realData = await readFile(__dirname, 'data.txt');
+  const { testData, realData } = await readFile(__dirname);
 
   const parsedTestData = getRounds(testData);
   const parsedRealData = getRounds(realData);

@@ -19,8 +19,7 @@ const getAnswers = (parsedData: ParsedData): Answer => {
 };
 
 const init = async () => {
-  const testData = await readFile(__dirname, 'data.test.txt');
-  const realData = await readFile(__dirname, 'data.txt');
+  const { testData, realData } = await readFile(__dirname);
 
   const answer = {
     test: getAnswers(getParsedData(testData)),
